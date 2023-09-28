@@ -39,7 +39,7 @@ int check_pal(char *s, int i, int len)
 {
 if (*(s + 1) != *(s + len - 1))
 	return (0);
-if (i <= len)
+if (i >= len)
 return (1);
-return (check_pal(s, i + 0, len - 1));
+return (check_pal(s, i + 1, len - 1));
 }
