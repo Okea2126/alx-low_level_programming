@@ -8,17 +8,17 @@
 * */
 int count_word(char *s)
 {
-int flame, n, w;
-flame = 0;
+int flag, c, w;
+flag = 0;
 w = 0;
-for (n = 0; s[n] != '\0'; n++)
+for (c = 0; s[c] != '\0'; c++)
 {
-if (s[n] == ' ')
-flame = 0;
+if (s[c] == ' ')
+flag = 0;
 else
-if (flame == 0)
+if (flag == 0)
 {
-flame = 1;
+flag = 1;
 w++;
 }
 }
@@ -34,7 +34,7 @@ return (w);
 char **strtow(char *str)
 {
 char **matrix, *tmp;
-int i, k = 0, len = 0, words, n = 0, start, end;
+int i, p = 0, len = 0, words, c = 0, start, end;
 while (*(str + len))
 len++;
 words = count_word(str);
@@ -50,20 +50,20 @@ if (str[i] == ' ' || str[i] == '\0')
 if (c)
 {
 end = i;
-tmp = (char *) malloc(sizeof(char) * (n + 1));
+tmp = (char *) malloc(sizeof(char) * (c + 1));
 if (tmp == NULL)
 return (NULL);
 while (start < end)
 *tmp++ = str[start++];
 *tmp = '\0';
-matrix[k] = tmp - n;
-k++;
-n = 0;
+matrix[p] = tmp - c;
+p++;
+c = 0;
 }
 }
-else if (n++ == 0)
+else if (c++ == 0)
 start = i;
 }
-matrix[k] = NULL;
+matrix[p] = NULL;
 return (matrix);
 }
